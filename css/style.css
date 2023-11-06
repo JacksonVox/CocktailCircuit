@@ -10,6 +10,17 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
+body > * {
+  margin: auto;
+  max-width: 20em;
+  border: 2px solid black;
+}
+
+.main > * {
+  border: 1px solid red;
+  height: 30em;
+}
+
 img{
   display: block;
   margin: 0 auto;
@@ -20,3 +31,7 @@ img{
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+.hidden {
+  display: none;
+}

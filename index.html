@@ -5,21 +5,46 @@
     	<meta name="description" content="This is where your description goes">
     	<meta name="keywords" content="one, two, three">
 
-		<title>Title in the tab</title>
+		<title>CocktailCircuit</title>
 
 		<!-- external CSS link -->
-		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
 
-		<h1>Which Cocktail?</h1>
-		<input type="text" name="" value="">
-		<button type="button" name="button">Get Cocktail</button>
+		<h1>Cocktail Circuit</h1>
 
-		<h2>Name</h2>
-		<img src="" alt="">
-		<h3>Instructions</h3>
+		<div class="main">
+
+			<div id="greet">
+				<h2>Welcome!</h2>
+				<p></p>
+			</div>
+
+
+			<div id="quiz">
+				<h2>Name</h2>
+				<img src="" alt="">
+			</div>
+
+
+			<div id="answer">
+				<h2>Name</h2>
+				<img src="" alt="">
+				<ul id="ingredients">
+				</ul>
+				<p id="steps"></p>
+			</div>
+
+		</div>
+
+		<div class="controls">
+			<button id="thumb-down"></button>
+			<button id="go"></button>
+			<div id="timer"></div>
+			<button id="thumb-up"></button>
+		</div>
 
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>

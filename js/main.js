@@ -40,8 +40,8 @@ const quizList = [...cocktails]
   //QUIZ
 
   function goQuiz(){
-    const randomCocktailIndex = Math.floor(Math.random() * cocktails.length)
-    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + cocktails[randomCocktailIndex])
+    const randomCocktailIndex = Math.floor(Math.random() * quizList.length)
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + quizList[randomCocktailIndex])
       .then(res => res.json()) // parse response as JSON
       .then(data => {
         console.log(data)
@@ -50,7 +50,7 @@ const quizList = [...cocktails]
         const ingredientsArr = []
         for (let i = 1; i <= 15; i++){
           if (data.drinks[0][`strIngredient${i}`] !== null ){
-            ingredientsArr.push(data.drinks[0][`strIngredient${i}`])
+            ingredientsArr.push(`${data.drinks[0][`strMeasure${i}`] === null ? '' : (data.drinks[0][`strMeasure${i}`] + " ")}` + data.drinks[0][`strIngredient${i}`])
           }
         }
 

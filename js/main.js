@@ -31,13 +31,48 @@ const quizList = [...cocktails]
   //EVENT LISTENERS
 
   document.querySelector('#go').addEventListener('click', goQuiz)
-  // document.querySelector('#stop').addEventListener('click', stopQuiz)
+  document.querySelector('#stop').addEventListener('click', stopQuiz)
   // document.querySelector('#thumb-up').addEventListener('click', thumbUp)
   // document.querySelector('#thumb-down').addEventListener('click', thumbDown)
 
 //TIMER
 const timer = document.getElementById('timer')
-let time = 0
+let intervalId
+
+function startTimer() {
+
+  //change buttons
+  timer.classList.remove('hidden')
+  document.querySelector('#go').classList.add('hidden')
+  document.querySelector('#stop').classList.remove('hidden')
+
+  let time = 0
+  intervalId = setInterval(() => {
+    // check for time up
+    if (time >= 20){
+      outOfTime()
+      return
+    }
+    time++
+    timer.textContent = time
+  }, 1000) //delay 1000ms === 1s
+}
+
+//STOP TIME function
+function stopQuiz(){
+  //stop timer function
+  clearInterval(intervalId)
+  
+  //show answer screen
+  document.querySelector('#quiz').classList.add('hidden')
+  document.querySelector('#answer').classList.remove('hidden')
+  //change buttons
+  document.querySelector('#thumbs-up').classList.remove('hidden-button')
+  document.querySelector('#thumbs-down').classList.remove('hidden-button')
+  document.querySelector('#go').classList.remove('hidden')
+  document.querySelector('#stop').classList.add('hidden')
+  
+}
 
 //OUT OF TIME function
 function outOfTime(){
@@ -49,15 +84,7 @@ function outOfTime(){
   document.querySelector('#answer').classList.remove('hidden')
 }
 
-let intervalId = setInterval(() => {
-  // check for time up
-  if (time >= 20){
-    outOfTime()
-    return
-  }
-  time++
-  timer.textContent = time
-}, 1000) //delay 1000ms === 1s
+
 
 
 //QUIZ
@@ -89,8 +116,12 @@ function goQuiz(){
 
       //hide greeting panel and display quiz panel elements
       document.querySelector('#greet').classList.add('hidden')
+      document.querySelector('#answer').classList.add('hidden')
       document.querySelector('#quiz').classList.remove('hidden')
       timer.classList.remove('hidden')
+
+      timer.textContent = 0
+      startTimer()
       
     })
     .catch(err => {

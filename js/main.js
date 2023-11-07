@@ -30,7 +30,7 @@ const quizList = [...cocktails]
 document.querySelector('#go').addEventListener('click', goQuiz)
 document.querySelector('#stop').addEventListener('click', stopQuiz)
 document.querySelector('#thumbs-up').addEventListener('click', thumbsUp)
-// document.querySelector('#thumbs-down').addEventListener('click', thumbDown)
+document.querySelector('#thumbs-down').addEventListener('click', thumbsDown)
 
 //SCORE and THUMB BUTTONS
 let scoreUp = 0
@@ -138,5 +138,6 @@ function goQuiz(){
     })
     .catch(err => {
         console.log(`error ${err}`)
+        goQuiz()
     });
 }

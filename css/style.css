@@ -59,10 +59,32 @@ header h1 {
 }
 
 /* QUIZ */
-
+#quiz {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+  .drink-name {
+    width: 100%;
+  }
+  #quiz img {
+    width: 80%;
+  }
 
 /* ANSWER */
+#answer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
 
+#answer img {
+  width: 40%;
+}
+
+#ingredients {
+  width: 50%;
+}
 
 /*********** CONTROLS ************/
 #controls {
@@ -84,7 +106,7 @@ button {
 /*******************************************/
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .hidden-button {
@@ -94,9 +116,3 @@ button {
   #thumbs-up.hidden-button::before, #thumbs-down.hidden-button::before {
     display: none !important;
   }
-
-img{
-  display: block;
-  margin: 0 auto;
-  height: 200px;
-}

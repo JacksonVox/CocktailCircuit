@@ -33,16 +33,44 @@ document.querySelector('#thumbs-up').addEventListener('click', thumbsUp)
 document.querySelector('#thumbs-down').addEventListener('click', thumbsDown)
 
 //SCORE and THUMB BUTTONS
-let scoreUp = 0
-let scoreDown = 0
+let scoreUp = document.querySelector('#scorePositive')
+let scoreDown = document.querySelector('#scoreNegative')
 
 function thumbsUp(){
-  scoreUp++
-  quizList.splice(randomCocktailIndex, 1)
+  scoreUp.innerText = parseInt(scoreUp.innerText) + 1
+  if (parseInt(scoreUp.innerText) >= 20){
+    win()
+  }
+  //splice with extra delete protection
+  let index = quizList.indexOf(randomCocktail);
+  if (index !== -1) {
+    quizList.splice(index, 1);
+  }
+  // Disable the buttons
+  document.querySelector('#thumbs-up').disabled = true;
+  document.querySelector('#thumbs-down').disabled = true;
 }
 
 function thumbsDown(){
-  scoreDown++
+  scoreDown.innerText = parseInt(scoreDown.innerText) + 1
+  // Disable the buttons
+  document.querySelector('#thumbs-up').disabled = true;
+  document.querySelector('#thumbs-down').disabled = true;
+}
+
+//WIN
+function win(){
+  //change main view
+  document.querySelector('#answer').classList.add('hidden')
+  document.querySelector('#win').classList.remove('hidden')
+  //change buttons
+  document.querySelector('.buttons').classList.add('hidden')
+  document.querySelector('.bu').classList.add('hidden')
+  // document.querySelector('#thumbs-up').classList.add('hidden-button')
+  // document.querySelector('#thumbs-down').classList.add('hidden-button')
+  // document.querySelector('#go').classList.add('hidden')
+  // document.querySelector('#stop').classList.add('hidden')
+
 }
 
 //TIMER
@@ -81,7 +109,9 @@ function stopQuiz(){
   document.querySelector('#thumbs-down').classList.remove('hidden-button')
   document.querySelector('#go').classList.remove('hidden')
   document.querySelector('#stop').classList.add('hidden')
-  
+  //enable thumbs buttons
+  document.querySelector('#thumbs-up').disabled = false;
+  document.querySelector('#thumbs-down').disabled = false;
 }
 
 //OUT OF TIME function
@@ -100,10 +130,12 @@ function outOfTime(){
 //QUIZ
 
 let randomCocktailIndex
+let randomCocktail
 
 function goQuiz(){
   randomCocktailIndex = Math.floor(Math.random() * quizList.length)
-  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + quizList[randomCocktailIndex])
+  randomCocktail = quizList[randomCocktailIndex]
+  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + randomCocktail)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
       console.log(data)

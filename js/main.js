@@ -1,23 +1,75 @@
-//The user will enter a cocktail. Get a cocktail name, photo, and instructions and place them in the DOM
+//Cocktail List
+const cocktails = [
+  "Negroni",
+  "Old Fashioned",
+  "Margarita",
+  "Espresso Martini",
+  "Daiquiri",
+  "Air Mail",
+  "Southside",
+  "Hanky Panky",
+  "Rum Old Fashioned",
+  "Army & Navy",
+  "Mojito",
+  "Long Island Iced Tea",
+  "Bloody Mary",
+  "Manhattan",
+  "White Russian",
+  "Martini",
+  "Mai Tai",
+  "Caipirinha",
+  "Sangria",
+  "Mimosa"
+]
 
-document.querySelector('button').addEventListener('click', getDrink)
-let drinkCounter = 0
-function getDrink(){
-  const input = document.querySelector('input').value
-  fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' +input)
-    .then(res => res.json()) // parse response as JSON
-    .then(data => {
-      console.log(data)
-      document.querySelector('h2').innerText = data.drinks[drinkCounter].strDrink
-      document.querySelector('h3').innerText = data.drinks[drinkCounter].strInstructions
-      document.querySelector('img').src = data.drinks[drinkCounter].strDrinkThumb
-      drinkCounter++
-      if (drinkCounter === data.drinks.length)
-        drinkCounter = 0
-    })
-    .catch(err => {
-        console.log(`error ${err}`)
-    });
-}
 
-      // 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita'
+const quizList = [...cocktails]
+
+  // 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita'
+
+
+  //EVENT LISTENERS
+
+  document.querySelector('#go').addEventListener('click', goQuiz)
+  // document.querySelector('#stop').addEventListener('click', stopQuiz)
+  // document.querySelector('#thumb-up').addEventListener('click', thumbUp)
+  // document.querySelector('#thumb-down').addEventListener('click', thumbDown)
+
+
+
+  //QUIZ
+
+  function goQuiz(){
+    const randomCocktailIndex = Math.floor(Math.random() * cocktails.length)
+    fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + cocktails[randomCocktailIndex])
+      .then(res => res.json()) // parse response as JSON
+      .then(data => {
+        console.log(data)
+
+        //create ingredients array
+        const ingredientsArr = []
+        for (let i = 1; i <= 15; i++){
+          if (data.drinks[0][`strIngredient${i}`] !== null ){
+            ingredientsArr.push(data.drinks[0][`strIngredient${i}`])
+          }
+        }
+
+        //Inject content
+        document.querySelectorAll('img').forEach(e => e.src = data.drinks[0].strDrinkThumb)
+        document.querySelectorAll('.drink-name').forEach(e => e.innerText = data.drinks[0].strDrink)
+        document.querySelector('#ingredients').innerHTML = (() => {
+          let output = []
+          ingredientsArr.forEach(e => output.push(`<li>${e}</li>`))
+          return output.join('')
+        })()
+        document.querySelector('#steps').innerText = data.drinks[0].strInstructions
+
+        //hide greeting panel and display quiz panel
+        document.querySelector('#greet').classList.add('hidden')
+        document.querySelector('#quiz').classList.remove('hidden')
+        
+      })
+      .catch(err => {
+          console.log(`error ${err}`)
+      });
+  }

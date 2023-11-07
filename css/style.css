@@ -10,21 +10,72 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
+body {
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-around; 
+  font-size: .625rem;
+}
 body > * {
-  margin: auto;
-  max-width: 20em;
+  width: 85vw;
   border: 2px solid black;
+  text-align: center;
+  font-size: 2em;
 }
 
+header {
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header h1 {
+  font-size: 2.2em;
+}
+
+/************** MAIN CARDS ******************/
+
+.main {
+  height: 75vh;
+}
 .main > * {
   border: 1px solid red;
-  height: 30em;
+
 }
 
-img{
-  display: block;
-  margin: 0 auto;
-  height: 200px;
+/* GREETING */
+
+#greet h2 {
+  font-size: 2em;
+}
+
+#greet p {
+  margin: 1em;
+  line-height: 120%;
+  text-align: left;
+}
+
+/* QUIZ */
+
+
+/* ANSWER */
+
+
+/*********** CONTROLS ************/
+#controls {
+  height: 12vh;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+button {
+  height: 90%;
+  width: 20%;
 }
 
 
@@ -34,4 +85,10 @@ img{
 
 .hidden {
   display: none;
+}
+
+img{
+  display: block;
+  margin: 0 auto;
+  height: 200px;
 }

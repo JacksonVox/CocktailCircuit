@@ -13,24 +13,31 @@
 	</head>
 	<body>
 
-		<h1>Cocktail Circuit</h1>
+		<header>
+			<h1>Cocktail Circuit</h1>
+		</header>
 
 		<div class="main">
 
-			<div id="greet">
+			<div class="" id="greet">
 				<h2>Welcome!</h2>
-				<p></p>
+				<p>It's time to study your cocktails!
+				<br>Press GO and try your best to remember the recipe before the timer hits 0!
+				<br>When you think you've got it - hit STOP!
+				<br>Be honest - and give yourself a THUMBUP or thumb-down
+				<br>Memorize these popular drinks to pass your in-person quiz!
+				</p>
 			</div>
 
 
-			<div id="quiz">
-				<h2>Name</h2>
-				<img src="" alt="">
+			<div class="hidden" id="quiz">
+				<h2 class="drink-name"></h2>
+				<img class="blurry" src="" alt="">
 			</div>
 
 
-			<div id="answer">
-				<h2>Name</h2>
+			<div class="hidden" id="answer">
+				<h2 class="drink-name"></h2>
 				<img src="" alt="">
 				<ul id="ingredients">
 				</ul>
@@ -39,11 +46,12 @@
 
 		</div>
 
-		<div class="controls">
-			<button id="thumb-down"></button>
-			<button id="go"></button>
-			<div id="timer"></div>
-			<button id="thumb-up"></button>
+		<div id="controls">
+			<button class="fa-regular fa-thumbs-down hidden" id="thumb-down"></button>
+			<button class="" id="go">GO</button>
+			<button class="hidden" id="stop"></button>
+			<div class="" id="timer"></div>
+			<button class="fa-regular fa-thumbs-up hidden" id="thumb-up"></button>
 		</div>
 
 		<script type="text/javascript" src="js/main.js"></script>

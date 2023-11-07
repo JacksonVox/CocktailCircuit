@@ -25,15 +25,25 @@ const cocktails = [
 
 const quizList = [...cocktails]
 
-  // 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita'
 
+//EVENT LISTENERS
+document.querySelector('#go').addEventListener('click', goQuiz)
+document.querySelector('#stop').addEventListener('click', stopQuiz)
+document.querySelector('#thumbs-up').addEventListener('click', thumbsUp)
+// document.querySelector('#thumbs-down').addEventListener('click', thumbDown)
 
-  //EVENT LISTENERS
+//SCORE and THUMB BUTTONS
+let scoreUp = 0
+let scoreDown = 0
 
-  document.querySelector('#go').addEventListener('click', goQuiz)
-  document.querySelector('#stop').addEventListener('click', stopQuiz)
-  // document.querySelector('#thumb-up').addEventListener('click', thumbUp)
-  // document.querySelector('#thumb-down').addEventListener('click', thumbDown)
+function thumbsUp(){
+  scoreUp++
+  quizList.splice(randomCocktailIndex, 1)
+}
+
+function thumbsDown(){
+  scoreDown++
+}
 
 //TIMER
 const timer = document.getElementById('timer')
@@ -89,8 +99,10 @@ function outOfTime(){
 
 //QUIZ
 
+let randomCocktailIndex
+
 function goQuiz(){
-  const randomCocktailIndex = Math.floor(Math.random() * quizList.length)
+  randomCocktailIndex = Math.floor(Math.random() * quizList.length)
   fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + quizList[randomCocktailIndex])
     .then(res => res.json()) // parse response as JSON
     .then(data => {

@@ -5,10 +5,10 @@ const cocktails = [
   "Margarita",
   "Espresso Martini",
   "Daiquiri",
-  "Air Mail",
-  "Southside",
+  "French 75",
+  "Pisco Sour",
   "Hanky Panky",
-  "Rum Old Fashioned",
+  "Dark and Stormy",
   "Army & Navy",
   "Mojito",
   "Long Island Iced Tea",
@@ -47,15 +47,15 @@ function thumbsUp(){
     quizList.splice(index, 1);
   }
   // Disable the buttons
-  document.querySelector('#thumbs-up').disabled = true;
-  document.querySelector('#thumbs-down').disabled = true;
+  document.querySelector('#thumbs-up').disabled = true
+  document.querySelector('#thumbs-down').disabled = true
 }
 
 function thumbsDown(){
   scoreDown.innerText = parseInt(scoreDown.innerText) + 1
   // Disable the buttons
-  document.querySelector('#thumbs-up').disabled = true;
-  document.querySelector('#thumbs-down').disabled = true;
+  document.querySelector('#thumbs-up').disabled = true
+  document.querySelector('#thumbs-down').disabled = true
 }
 
 //WIN
@@ -64,14 +64,18 @@ function win(){
   document.querySelector('#answer').classList.add('hidden')
   document.querySelector('#win').classList.remove('hidden')
   //change buttons
-  document.querySelector('.buttons').classList.add('hidden')
-  document.querySelector('.bu').classList.add('hidden')
+  document.querySelectorAll('button').forEach(e => e.classList.add('hidden'))
   // document.querySelector('#thumbs-up').classList.add('hidden-button')
   // document.querySelector('#thumbs-down').classList.add('hidden-button')
-  // document.querySelector('#go').classList.add('hidden')
+  document.querySelector('#reload').classList.remove('hidden')
   // document.querySelector('#stop').classList.add('hidden')
 
 }
+
+//RELOAD AFTER WIN BUTTON
+document.querySelector('#reload').addEventListener('click', function() {
+  location.reload()
+})
 
 //TIMER
 const timer = document.getElementById('timer')
@@ -169,7 +173,7 @@ function goQuiz(){
       
     })
     .catch(err => {
-        console.log(`error ${err}`)
+        console.log(`error ${err} ${randomCocktail} is not found`)
         goQuiz()
     });
 }

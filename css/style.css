@@ -52,15 +52,31 @@ header h1 {
 
 /* GREETING */
 
+#greet {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #greet h2 {
   font-size: 2em;
+  margin: .5em 0;
 }
 
 #greet p {
-  margin: 1em;
-  line-height: 120%;
-  text-align: left;
+  font-size: .9em;
+  margin: 0 1em;
+  line-height: 150%;
+  text-align: center;
 }
+  @media (min-width: 700px) {
+    #greet p {
+      font-size: 1.2em;
+    }
+    
+  }
+
 
 /* QUIZ */
 #quiz {

@@ -127,6 +127,13 @@ function outOfTime(){
   //show answer screen
   document.querySelector('#quiz').classList.add('hidden')
   document.querySelector('#answer').classList.remove('hidden')
+
+  //swap go and stop button
+  document.querySelector('#go').classList.remove('hidden')
+  document.querySelector('#stop').classList.add('hidden')
+
+  //lose one point
+  scoreDown.innerText = parseInt(scoreDown.innerText) + 1
 }
 
 
@@ -170,7 +177,7 @@ function goQuiz(){
       document.querySelector('#thumbs-down').classList.add('hidden')
       timer.classList.remove('hidden')
 
-      timer.textContent = 0
+      timer.textContent = 20
       startTimer()
       
     })

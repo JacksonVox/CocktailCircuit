@@ -17,12 +17,15 @@ body {
   align-items: center;
   justify-content: space-around; 
   font-size: .625rem;
+  background-color: #19381F;
 }
 body > * {
   width: 85vw;
-  border: 2px solid black;
   text-align: center;
   font-size: 2em;
+  background-color: #f2e8cf;
+  border-radius: 10px;
+  color: #19381F;
 }
 
 header {
@@ -42,7 +45,6 @@ header h1 {
   height: 70vh;
 }
 .main > * {
-  border: 1px solid red;
 
 }
 
@@ -72,6 +74,8 @@ header h1 {
   #quiz img {
     width: 60%;
     max-width: 14em;
+    filter: blur(10px);
+    margin-top: 1em;
   }
 
 /* ANSWER */
@@ -92,7 +96,9 @@ header h1 {
 #ingredients {
   width: 50%;
   text-align: left;
-  list-style-type: square;
+  list-style-type: disc;
+  color: #19381F;
+  font-family: 'Oswald', sans-serif;
 }
   #ingredients li {
     margin-left: 1em;
@@ -100,6 +106,11 @@ header h1 {
 
 #steps {
   margin-top: 1em;
+  width: 93.3%;
+  color: #19381F;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.1em;
+  text-align: left;
 }
 
 
@@ -111,7 +122,6 @@ header h1 {
   justify-content: space-evenly;
 }
   #scoreCard > * {
-    border: 2px solid purple;
   }
 
 #timer-wrapper {
@@ -153,41 +163,29 @@ header h1 {
   justify-content: space-evenly;
 }
 
+
+/* BUTTONS */
+
 button {
   height: 90%;
   width: 20%;
 }
-
-
-/******************************************
-/* ADDITIONAL STYLES
-/*******************************************/
-
-.hidden {
-  display: none !important;
-}
-
-.hidden-button {
-  display: none !important
-}
-
-  #thumbs-up.hidden-button::before, #thumbs-down.hidden-button::before {
-    display: none !important;
+  button::before {
+    font-size: 32px;
+    font-weight: 600;
+  }
+  button:hover::before {
+    font-size: 40px;
   }
 
-
-
-
-/* CSS */
 .button-68 {
   appearance: none;
   backface-visibility: hidden;
-  background-color: #27ae60;
+  background-color: #EEE82C;
   border-radius: 8px;
   border-style: none;
-  box-shadow: rgba(39, 174, 96, .15) 0 4px 9px;
   box-sizing: border-box;
-  color: #fff;
+  color: #19381F;
   cursor: pointer;
   display: inline-block;
   font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
@@ -223,6 +221,26 @@ button {
   transition-duration: .35s;
 }
 
-.button-68:hover {
-  box-shadow: rgba(39, 174, 96, .2) 0 6px 12px;
+#thumbs-up {
+  background-color: #f2e8cf;
+  color: #53a548;
 }
+
+#thumbs-down {
+  background-color: #f2e8cf;
+  color: #a44a3f;
+}
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
+.hidden {
+  display: none !important;
+}
+
+  #thumbs-up.hidden-button::before, #thumbs-down.hidden-button::before {
+    display: none !important;
+  }
+

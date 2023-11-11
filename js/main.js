@@ -65,8 +65,8 @@ function win(){
   document.querySelector('#win').classList.remove('hidden')
   //change buttons
   document.querySelectorAll('button').forEach(e => e.classList.add('hidden'))
-  // document.querySelector('#thumbs-up').classList.add('hidden-button')
-  // document.querySelector('#thumbs-down').classList.add('hidden-button')
+  // document.querySelector('#thumbs-up').classList.add('hidden')
+  // document.querySelector('#thumbs-down').classList.add('hidden')
   document.querySelector('#reload').classList.remove('hidden')
   // document.querySelector('#stop').classList.add('hidden')
 
@@ -109,8 +109,8 @@ function stopQuiz(){
   document.querySelector('#quiz').classList.add('hidden')
   document.querySelector('#answer').classList.remove('hidden')
   //change buttons
-  document.querySelector('#thumbs-up').classList.remove('hidden-button')
-  document.querySelector('#thumbs-down').classList.remove('hidden-button')
+  document.querySelector('#thumbs-up').classList.remove('hidden')
+  document.querySelector('#thumbs-down').classList.remove('hidden')
   document.querySelector('#go').classList.remove('hidden')
   document.querySelector('#stop').classList.add('hidden')
   //enable thumbs buttons
@@ -166,6 +166,8 @@ function goQuiz(){
       document.querySelector('#greet').classList.add('hidden')
       document.querySelector('#answer').classList.add('hidden')
       document.querySelector('#quiz').classList.remove('hidden')
+      document.querySelector('#thumbs-up').classList.add('hidden')
+      document.querySelector('#thumbs-down').classList.add('hidden')
       timer.classList.remove('hidden')
 
       timer.textContent = 0

@@ -7,7 +7,7 @@ const cocktails = [
   "Daiquiri",
   "French 75",
   "Pisco Sour",
-  "Hanky Panky",
+  "Cosmopolitan",
   "Dark and Stormy",
   "Army & Navy",
   "Mojito",
@@ -38,9 +38,6 @@ let scoreDown = document.querySelector('#scoreNegative')
 
 function thumbsUp(){
   scoreUp.innerText = parseInt(scoreUp.innerText) + 1
-  if (parseInt(scoreUp.innerText) >= 20){
-    win()
-  }
   //splice with extra delete protection
   let index = quizList.indexOf(randomCocktail);
   if (index !== -1) {
@@ -49,6 +46,10 @@ function thumbsUp(){
   // Disable the buttons
   document.querySelector('#thumbs-up').disabled = true
   document.querySelector('#thumbs-down').disabled = true
+  // Win Condition
+  if (quizList.length <= 0){
+    win()
+  }
 }
 
 function thumbsDown(){
@@ -88,14 +89,14 @@ function startTimer() {
   document.querySelector('#go').classList.add('hidden')
   document.querySelector('#stop').classList.remove('hidden')
 
-  let time = 0
+  let time = 20
   intervalId = setInterval(() => {
     // check for time up
-    if (time >= 20){
+    if (time <= 0){
       outOfTime()
       return
     }
-    time++
+    time--
     timer.textContent = time
   }, 1000) //delay 1000ms === 1s
 }
@@ -142,7 +143,6 @@ function goQuiz(){
   fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + randomCocktail)
     .then(res => res.json()) // parse response as JSON
     .then(data => {
-      console.log(data)
 
       //create ingredients array
       const ingredientsArr = []

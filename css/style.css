@@ -36,7 +36,9 @@ header {
 }
 
 header h1 {
-  font-size: 1.6em;
+  margin: 3px 0;
+  font-size: 1.2em;
+  font-family: 'Oswald', sans-serif;
 }
 
 /************** MAIN CARDS ******************/
@@ -44,8 +46,8 @@ header h1 {
 .main {
   height: 70vh;
 }
-.main > * {
-
+.main * {
+  font-family: 'Oswald', sans-serif;
 }
 
 /* GREETING */
@@ -113,38 +115,63 @@ header h1 {
   text-align: left;
 }
 
+/***************** WIN ***************/
+
+#win {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+  #win h2 {
+    font-size: 2em;
+    font-weight: bold;
+  }
 
 /*********** SCORECARD ************/
 #scoreCard {
   height: 8vh;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
   #scoreCard > * {
+    margin: 0 2em;
   }
 
 #timer-wrapper {
   height: 100%;
   width: 30%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
 }
+  #timer-wrapper span {
+    width: 100%;
+    font-size: 1em;
+  }
   #timer {
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
 
 #score {
   height: 100%;
   width: 60%;
+  max-width: 20em;
   display: flex;
   flex-flow: row wrap;
 }
   #score span {
     width: 100%;
+    font-size: 1em;
   }
 
   #scorePositive, #scoreNegative {
     width: 50%;
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
   #scorePositive {
     color: green;
@@ -189,7 +216,7 @@ button {
   cursor: pointer;
   display: inline-block;
   font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 600;
   letter-spacing: normal;
   line-height: 1.5;
@@ -229,6 +256,14 @@ button {
 #thumbs-down {
   background-color: #f2e8cf;
   color: #a44a3f;
+}
+
+#reload {
+  width: 9em;
+  height: 3em;
+  color: #f2e8cf;
+  background-color: #19381F;
+  font-size: 1em;
 }
 
 
